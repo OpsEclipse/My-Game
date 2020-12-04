@@ -39,13 +39,18 @@ function setup() {
   cube1.velocityY = 10;
   cube1.shapeColor = "green";
 
-  cube2 = createSprite(300,-200,50,50);
+  cube2 = createSprite(300,-250,50,50);
   cube2.velocityY = 10;
   cube2.shapeColor = "yellow";
 
-  cube3 = createSprite(1100,-350,50,50);
+  cube3 = createSprite(1100,-400,50,50);
   cube3.velocityY = 10;
   cube3.shapeColor = "blue";
+
+  cube4 = createSprite(1400,-650,50,50);
+  cube4.velocityY = 10;
+  cube4.shapeColor = "pink";
+
 
 
   cubeG = new Group();
@@ -78,7 +83,12 @@ function draw() {
       cube3.y = -50;
       cube3.x = Math.round(random(50,1550));
     }
-    else if(cube1.isTouching(groundS)||cube2.isTouching(groundS)||cube3.isTouching(groundS)){
+    else if(cube4.isTouching(bucketBS)){
+      score++;
+      cube4.y = -50;
+      cube4.x = Math.round(random(50,1550));
+    }
+    else if(cube1.isTouching(groundS)||cube2.isTouching(groundS)||cube3.isTouching(groundS)||cube4.isTouching(groundS)){
       gameState = END;
     }
 
@@ -90,6 +100,7 @@ function draw() {
     cube1.velocityY = 0;
     cube2.velocityY = 0;
     cube3.velocityY = 0;
+    cube4.velocityY = 0;
   }
 bucketBS.x = bucketB.x;
 bucketLS.x = bucketL.x;
