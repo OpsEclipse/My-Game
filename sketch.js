@@ -66,6 +66,12 @@ function draw() {
   if(gameState === PLAY){
 
     MoveB();
+    cube1.velocityY=10;
+    cube2.velocityY=10;
+    cube3.velocityY=10;
+    cube4.velocityY=10;
+
+    
 
     if(cube1.isTouching(bucketBS)){
       score++;
@@ -89,10 +95,23 @@ function draw() {
       cube4.x = Math.round(random(50,1550));
     }
     else if(cube1.isTouching(groundS)||cube2.isTouching(groundS)||cube3.isTouching(groundS)||cube4.isTouching(groundS)){
+      cube1.y = -50;
+      cube2.y = -250;
+      cube3.y = -400;
+      cube4.y = -650;
+      cube1.x = Math.round(random(50,1550));
+      cube2.x = Math.round(random(50,1550));
+      cube3.x = Math.round(random(50,1550));
+      cube4.x = Math.round(random(50,1550));
+
       gameState = END;
     }
 
   }else if(gameState === END){
+    
+    if(keyDown("R")){
+      gameState = PLAY;
+    }
     textStyle("PermanentMarker");
     textSize(100);
     fill("red");
