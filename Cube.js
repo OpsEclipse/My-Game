@@ -1,6 +1,7 @@
 class Cube{
     constructor(x,y){
         var options = {
+            //isStatic:true,
             restitution : 0.8,
             density : 1.0,
             friction : 1.5
