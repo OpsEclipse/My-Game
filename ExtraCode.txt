@@ -11,11 +11,11 @@
 
 function spawnC(){
   if(frameCount%40===0){
-    cube1 = createSprite(100,-50,50,50);
-    cube1.shapeColor = rgb(Math.round(random(0,255)),Math.round(random(0,255)),Math.round(random(0,255)));
+    coin1 = createSprite(100,-50,50,50);
+    coin1.shapeColor = rgb(Math.round(random(0,255)),Math.round(random(0,255)),Math.round(random(0,255)));
     var rand = Math.round(random(100,1700));
-    cube1.x = rand;
-    cube1.velocityY = 10;
-    cubeG.add(cube1);
+    coin1.x = rand;
+    coin1.velocityY = 10;
+    cubeG.add(coin1);
   }
 }
