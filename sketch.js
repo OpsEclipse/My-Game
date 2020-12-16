@@ -35,7 +35,7 @@ function setup() {
   engine = Engine.create();
   world = engine.world;
 
-  createCanvas(1800,800);
+  createCanvas(windowWidth, windowHeight);
 
   ground = new Ground(900,790);
   groundS = createSprite(900,790,1800,10);
@@ -47,22 +47,22 @@ function setup() {
   bucketBS.scale = 0.4;
 
   coin1 = createSprite(900,-50,50,50);
-  coin1.velocityY = 10;
+  //coin1.velocityY = 10;
   coin1.addImage(coin);
   coin1.scale = 0.2;
 
   coin2 = createSprite(300,-250,50,50);
-  coin2.velocityY = 10;
+  //coin2.velocityY = 10;
   coin2.addImage(coin)
   coin2.scale = 0.2;
 
   coin3 = createSprite(1100,-400,50,50);
-  coin3.velocityY = 10;
+  //coin3.velocityY = 10;
   coin3.addImage(coin);
   coin3.scale = 0.2;
 
   coin4 = createSprite(1400,-650,50,50);
-  coin4.velocityY = 10;
+  //coin4.velocityY = 10;
   coin4.addImage(coin)
   coin4.scale = 0.2;
 
@@ -83,9 +83,6 @@ function draw() {
   text("Score : "+score,1500,100)
 
   if(gameState === PLAY){
-
-    
-
     MoveB();
 
     coin1.velocityY = 10;
@@ -124,7 +121,7 @@ function draw() {
       coin3.velocityY = coin3.velocityY+2;
       coin4.velocityY = coin4.velocityY+2;
     }
-    else if(coin1.isTouching(groundS)||coin2.isTouching(groundS)||coin3.isTouching(groundS)||coin4.isTouching(groundS)){
+    if(coin1.isTouching(groundS)||coin2.isTouching(groundS)||coin3.isTouching(groundS)||coin4.isTouching(groundS)){
       overMp3.play();
       gameState = END;
     }
@@ -151,11 +148,13 @@ bucketBS.x = bucketB.x;
 }
 
 function MoveB(){
-  if(keyIsDown(RIGHT_ARROW)){
+  if(touches.length>0 ||keyIsDown(RIGHT_ARROW)){
     bucketB.x = bucketB.x+50;
+    touches = []
   }
-  if(keyIsDown(LEFT_ARROW)){
+  if(touches.length>0 ||keyIsDown(LEFT_ARROW)){
     bucketB.x = bucketB.x-50;
+    touches = []
   }
 }
 function reset(){
